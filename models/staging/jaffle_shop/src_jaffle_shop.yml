@@ -7,6 +7,10 @@ sources:
     tables:
       - name: customers
       - name: orders
+        loaded_at_field: _etl_loaded_at # field has to be in the table
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
   
   # - name: stripe
   #   database: dbt-tutorial
